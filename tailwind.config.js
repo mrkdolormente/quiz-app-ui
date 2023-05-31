@@ -13,6 +13,9 @@ module.exports = {
       fontFamily: {
         impact: ['Impact', 'Haettenschweiler', '"Arial Narrow Bold"', 'sans-serif'],
       },
+      zIndex: {
+        infinity: '99999',
+      },
     },
     screens: {
       xs: '281px',
