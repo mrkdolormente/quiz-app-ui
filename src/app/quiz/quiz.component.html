@@ -1,10 +1,17 @@
-<app-wrapper customClass="qu-flex qu-flex-col qu-items-center qu-justify-center">
+<app-wrapper
+  customClass="qu-flex qu-flex-col qu-items-center qu-justify-center"
+>
   <h2
     class="qu-text-4xl qu-text-white qu-font-impact qu-uppercase qu-tracking-wider qu-border-b-2 qu-text-center qu-z-10"
   >
     Learning English
   </h2>
-  <app-question-card></app-question-card>
+  <app-question-card
+    [question]="activeQuestion$ | async"
+    [totalItem]="questionsCount$ | async"
+    [currentCount]="currentCount$ | async"
+    (updateAnswersListEvent)="updateAnswersList($event)"
+  ></app-question-card>
   <div
     class="qu-bg-cactus-light qu-h-32 qu-w-32 md:qu-h-64 md:qu-w-64 qu-rounded-full qu-absolute qu-top-48 lg:qu-top-72 qu-left-2 qu-ease-in-out qu-duration-500"
   ></div>

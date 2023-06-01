@@ -1,26 +1,50 @@
 <app-wrapper>
-  <div class="qu-grid qu-grid-cols-1 md:qu-grid-cols-2 qu-gap-4">
-    <section class="qu-bg-white qu-rounded-3xl qu-border-none qu-shadow-xl qu-z-20 qu-px-5 sm:qu-px-8 qu-pt-8">
-      <h2 class="qu-text-3xl qu-text-cactus-dark qu-font-impact qu-uppercase">Quiz Result</h2>
+  <div
+    class="qu-grid qu-grid-cols-1 md:qu-grid-cols-2 qu-gap-4"
+    *ngIf="quizResult$ | async as quizResult"
+  >
+    <section
+      class="qu-bg-white qu-rounded-3xl qu-border-none qu-shadow-xl qu-z-20 qu-px-5 sm:qu-px-8 qu-pt-8"
+    >
+      <h2 class="qu-text-3xl qu-text-cactus-dark qu-font-impact qu-uppercase">
+        Quiz Result
+      </h2>
       <h3>Learning English Quiz</h3>
       <div
         class="qu-w-full qu-rounded-t-3xl qu-bg-cactus-light/50 qu-px-4 qu-py-8 sm:qu-p-10 qu-flex qu-flex-col qu-items-center qu-gap-4"
       >
-        <div class="qu-relative qu-bg-white qu-inline-block qu-rounded-full qu-shadow-lg qu-p-2">
-          <mat-progress-spinner [color]="spinnerColor" [mode]="spinnerMode" [value]="spinnerValue" diameter="190">
+        <div
+          class="qu-relative qu-bg-white qu-inline-block qu-rounded-full qu-shadow-lg qu-p-2"
+        >
+          <mat-progress-spinner
+            [color]="spinnerColor"
+            [mode]="spinnerMode"
+            [value]="spinnerValue"
+            diameter="190"
+          >
           </mat-progress-spinner>
           <div
             class="qu-absolute qu-top-0 qu-left-0 qu-w-full qu-h-full qu-flex qu-flex-col qu-justify-center qu-items-center"
           >
-            <span><b class="qu-text-5xl">5</b>/60</span>
+            <span
+              ><b class="qu-text-5xl">{{ quizResult.correctAnswers }}</b
+              >/{{ quizResult.totalItems }}</span
+            >
             <span>your score</span>
           </div>
         </div>
-        <p class="qu-text-lg qu-text-center">You answered 5 out of 60 questions</p>
+        <p class="qu-text-lg qu-text-center">
+          You answered {{ quizResult.correctAnswers }} out of
+          {{ quizResult.totalItems }} questions
+        </p>
       </div>
     </section>
-    <section class="qu-bg-white qu-rounded-3xl qu-border-none qu-shadow-xl qu-z-20 qu-p-5 sm:qu-p-8">
-      <h2 class="qu-text-3xl qu-text-cactus-dark qu-font-impact qu-uppercase qu-mb-8">
+    <section
+      class="qu-bg-white qu-rounded-3xl qu-border-none qu-shadow-xl qu-z-20 qu-p-5 sm:qu-p-8"
+    >
+      <h2
+        class="qu-text-3xl qu-text-cactus-dark qu-font-impact qu-uppercase qu-mb-8"
+      >
         Recommended <span class="qu-text-2xl">for You</span>
       </h2>
       <div class="qu-grid qu-grid-cols-1 md:qu-grid-cols-3 qu-gap-4">
