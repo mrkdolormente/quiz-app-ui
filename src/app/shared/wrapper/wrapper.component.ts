@@ -5,7 +5,7 @@ import { Component, OnInit, Input } from '@angular/core';
   templateUrl: './wrapper.component.html',
 })
 export class WrapperComponent implements OnInit {
-  @Input() customClass: string = 'qu-flex qu-items-center';
+  @Input() customClass: string = '';
 
   constructor() {}
 
