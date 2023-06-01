@@ -14,7 +14,7 @@
     <mat-icon
       class="qu-ease-in-out qu-duration-300"
       [ngClass]="{ 'group-hover:qu-pl-0.5': !isDisabled }"
-      >arrow_forward</mat-icon
+      >{{ isDisabled ? 'close_icon' : 'arrow_forward' }}</mat-icon
     >
   </span>
 </button>
