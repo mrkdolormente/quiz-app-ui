@@ -1,8 +1,15 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 
 @Component({
   selector: 'app-button',
   templateUrl: './button.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ButtonComponent {
   @Input() isDisabled: boolean = false;

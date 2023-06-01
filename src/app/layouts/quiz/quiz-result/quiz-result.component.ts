@@ -1,37 +1,45 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 import { ThemePalette } from '@angular/material/core';
 import { QuizFacade } from 'src/app/state/quiz/quiz.facade';
 import { QuizResult } from 'src/app/models/quiz.model';
 
-import { Observable, concatMap, interval, map, take, tap } from 'rxjs';
-import { RxEffects } from '@rx-angular/state/effects';
+import { Observable, concatMap, interval, map, scan, take } from 'rxjs';
+import { RxState } from '@rx-angular/state';
+
+interface ComponentState {
+  spinnerValue: number;
+}
 
 @Component({
   selector: 'app-quiz-result',
   templateUrl: './quiz-result.component.html',
-  providers: [RxEffects],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [RxState],
 })
 export class QuizResultComponent implements OnInit {
   spinnerColor: ThemePalette = 'primary';
   spinnerMode: ProgressSpinnerMode = 'determinate';
-  spinnerValue: number = 0;
+
+  spinnerValue$: Observable<number>;
 
   quizResult$: Observable<QuizResult | null>;
 
   constructor(
     private readonly _quizFacade: QuizFacade,
-    private readonly _effects: RxEffects
+    private readonly _state: RxState<ComponentState>
   ) {
     this.quizResult$ = this._quizFacade.quizResult$;
+    this.spinnerValue$ = this._state.select('spinnerValue');
 
-    this._effects.register(
+    this._state.connect(
+      'spinnerValue',
       this.quizResult$.pipe(
         map((result) => Math.round(result?.average || 0)),
         concatMap((average) =>
           interval(10).pipe(
             take(average),
-            tap(() => this.spinnerValue++)
+            scan((count) => count + 1, 0)
           )
         )
       )
