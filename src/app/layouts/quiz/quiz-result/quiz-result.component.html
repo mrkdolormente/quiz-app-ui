@@ -37,6 +37,12 @@
           You answered {{ quizResult.correctAnswers }} out of
           {{ quizResult.totalItems }} questions
         </p>
+        <app-button
+          icon="home"
+          [withAnimation]="false"
+          (clickEvent)="redirectToHome()"
+          >Return to Home</app-button
+        >
       </div>
     </section>
     <section

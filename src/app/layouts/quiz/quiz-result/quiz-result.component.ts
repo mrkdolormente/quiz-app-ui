@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Self } from '@angular/core';
 import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 import { ThemePalette } from '@angular/material/core';
 import { QuizFacade } from 'src/app/state/quiz/quiz.facade';
@@ -6,6 +6,7 @@ import { QuizResult } from 'src/app/models/quiz.model';
 
 import { Observable, concatMap, interval, map, scan, take } from 'rxjs';
 import { RxState } from '@rx-angular/state';
+import { Router } from '@angular/router';
 
 interface ComponentState {
   spinnerValue: number;
@@ -17,7 +18,7 @@ interface ComponentState {
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [RxState],
 })
-export class QuizResultComponent implements OnInit {
+export class QuizResultComponent {
   spinnerColor: ThemePalette = 'primary';
   spinnerMode: ProgressSpinnerMode = 'determinate';
 
@@ -27,7 +28,8 @@ export class QuizResultComponent implements OnInit {
 
   constructor(
     private readonly _quizFacade: QuizFacade,
-    private readonly _state: RxState<ComponentState>
+    private readonly _router: Router,
+    @Self() private readonly _state: RxState<ComponentState>
   ) {
     this.quizResult$ = this._quizFacade.quizResult$;
     this.spinnerValue$ = this._state.select('spinnerValue');
@@ -44,8 +46,9 @@ export class QuizResultComponent implements OnInit {
         )
       )
     );
-    interval();
   }
 
-  ngOnInit(): void {}
+  redirectToHome() {
+    this._router.navigate(['/']);
+  }
 }
