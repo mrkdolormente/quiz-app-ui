@@ -23,9 +23,9 @@
           option.key !== answerKey
       }"
       (click)="selectAnswer(option.key)"
-      *ngFor="let option of question.options"
+      *ngFor="let option of question.options; let x = index"
     >
-      A. {{ option.text }}
+      {{ x | numberToAlphabet }}. {{ option.text }}
     </button>
   </div>
 

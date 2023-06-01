@@ -11,9 +11,15 @@ import { StoreModule } from '@ngrx/store';
 import { quizFeature } from '../state/quiz/quiz.feature';
 import { EffectsModule } from '@ngrx/effects';
 import { QuizEffects } from '../state/quiz/quiz.effects';
+import { NumberToAlphabetPipe } from '../pipes/number-to-alphabet.pipe';
 
 @NgModule({
-  declarations: [QuizComponent, QuestionCardComponent, QuizResultComponent],
+  declarations: [
+    QuizComponent,
+    QuestionCardComponent,
+    QuizResultComponent,
+    NumberToAlphabetPipe,
+  ],
   imports: [
     CommonModule,
     QuizRoutingModule,
