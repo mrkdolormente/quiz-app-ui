@@ -25,11 +25,13 @@ export class QuestionCardComponent {
   }
 
   updateAnswersList() {
-    this.updateAnswersListEvent.emit({
-      key: this.answerKey,
-      questionKey: this.question?.key ?? 0,
-    });
+    if (this.answerKey !== 0) {
+      this.updateAnswersListEvent.emit({
+        key: this.answerKey,
+        questionKey: this.question?.key ?? 0,
+      });
 
-    this.answerKey = 0;
+      this.answerKey = 0;
+    }
   }
 }
