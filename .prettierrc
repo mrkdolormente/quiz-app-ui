@@ -1,8 +1,24 @@
 {
+  "bracketSpacing": true,
   "singleQuote": true,
-  "printWidth": 120,
-  "tabWidth": 2,
-  "trailingComma": "all",
-  "arrowParens": "avoid",
-  "endOfLine": "auto"
+  "overrides": [
+    {
+      "files": ["*-routing.module.ts"],
+      "options": {
+        "printWidth": 160
+      }
+    },
+    {
+      "files": ["*.scss"],
+      "options": {
+        "singleQuote": false
+      }
+    },
+    {
+      "files": "*.xml",
+      "options": {
+        "parser": "xml"
+      }
+    }
+  ]
 }
