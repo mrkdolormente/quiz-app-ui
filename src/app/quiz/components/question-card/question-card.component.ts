@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Answer, Question } from 'src/app/models/quiz.model';
 
 @Component({
   selector: 'app-question-card',
@@ -8,8 +9,27 @@ import { Component, OnInit } from '@angular/core';
     class: 'question-card',
   },
 })
-export class QuestionCardComponent implements OnInit {
+export class QuestionCardComponent {
+  @Input() question: Question | null = null;
+  @Input() totalItem: number | null = 0;
+  @Input() currentCount: number | null = 0;
+
+  @Output() updateAnswersListEvent = new EventEmitter<Answer>();
+
+  answerKey: number = 0;
+
   constructor() {}
 
-  ngOnInit(): void {}
+  selectAnswer(answer: number) {
+    this.answerKey = answer;
+  }
+
+  updateAnswersList() {
+    this.updateAnswersListEvent.emit({
+      key: this.answerKey,
+      questionKey: this.question?.key ?? 0,
+    });
+
+    this.answerKey = 0;
+  }
 }
