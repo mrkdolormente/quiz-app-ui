@@ -7,7 +7,7 @@
   >
     <div class="qu-absolute -qu-top-4 qu-left-0 qu-w-full qu-text-center">
       <span
-        class="qu-text-base sm:qu-text-lg qu-bg-cactus-dark qu-text-white qu-p-5 qu-rounded-full qu-font-bold"
+        class="qu-text-base sm:qu-text-lg qu-bg-cactus-dark qu-text-white qu-p-5 qu-rounded-full qu-font-medium"
         >Question {{ currentCount }} of {{ totalItem }}</span
       >
     </div>
@@ -18,7 +18,7 @@
       <button
         class="qu-rounded-md qu-p-6 qu-ease-in-out qu-duration-100 qu-w-full"
         [ngClass]="{
-          'qu-outline qu-outline-offset-2 qu-outline-cactus-dark qu-bg-cactus-dark qu-text-white qu-font-bold':
+          'qu-outline qu-outline-offset-2 qu-outline-cactus-dark qu-bg-cactus-dark qu-text-white qu-font-medium':
             option.key === answerKey,
           'qu-border-cactus-medium qu-border-2 qu-bg-white hover:qu-bg-white/50':
             option.key !== answerKey
