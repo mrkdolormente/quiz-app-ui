@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Question, QuizResult } from '../models/quiz.model';
 import { QUESTIONS } from '../constants/questions';
+import { Recommendation } from '../models/recommendation.model';
+import { SCORE_RANGES } from '../constants/score';
+import { RECOMMENDATIONS } from '../constants/recommendations';
 
 @Injectable({
   providedIn: 'root',
@@ -28,7 +31,17 @@ export class QuizService {
       wrongAnswers: wrongCount,
       average,
       totalItems,
-      recommendation: [],
+      recommendations: this.getRecommendations(average),
     });
+  }
+
+  getRecommendations(average: number): Recommendation[] {
+    const range = SCORE_RANGES.find(
+      (range) => range.min <= average && range.max >= average
+    );
+
+    return RECOMMENDATIONS.filter(
+      (recommendation) => recommendation.category === range?.category
+    );
   }
 }

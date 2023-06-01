@@ -1,8 +1,10 @@
+import { Recommendation } from './recommendation.model';
+
 export interface QuizResult {
   correctAnswers: number;
   wrongAnswers: number;
   average: number;
-  recommendation: string[];
+  recommendations: Recommendation[];
   totalItems: number;
 }
 
