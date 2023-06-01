@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, Self } from '@angular/core';
-import { QuizFacade } from '../state/quiz/quiz.facade';
+import { QuizFacade } from '../../state/quiz/quiz.facade';
 
-import * as QuizActions from './../state/quiz/quiz.actions';
-import { Answer, Question } from '../models/quiz.model';
+import * as QuizActions from './../../state/quiz/quiz.actions';
+import { Answer, Question } from '../../models/quiz.model';
 import { Observable, filter, map, tap } from 'rxjs';
 import { concatLatestFrom } from '@ngrx/effects';
 import { Router } from '@angular/router';
