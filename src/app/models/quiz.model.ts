@@ -1,4 +1,5 @@
 import { Recommendation } from './recommendation.model';
+import { ScoreCategory } from './score.model';
 
 export interface QuizResult {
   correctAnswers: number;
@@ -6,6 +7,7 @@ export interface QuizResult {
   percentage: number;
   recommendations: Recommendation[];
   totalItems: number;
+  category: ScoreCategory;
 }
 
 export interface Question {
