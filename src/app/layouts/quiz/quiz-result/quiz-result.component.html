@@ -1,6 +1,6 @@
 <app-wrapper>
   <div
-    class="qu-grid qu-grid-cols-1 md:qu-grid-cols-2 qu-gap-4"
+    class="qu-flex qu-flex-col qu-max-w-screen-lg qu-w-full qu-gap-4 qu-mx-auto"
     *ngIf="quizResult$ | async as quizResult"
   >
     <section
@@ -19,7 +19,7 @@
           <mat-progress-spinner
             [color]="spinnerColor"
             [mode]="spinnerMode"
-            [value]="spinnerValue"
+            [value]="spinnerValue$ | async"
             diameter="190"
           >
           </mat-progress-spinner>
@@ -27,7 +27,7 @@
             class="qu-absolute qu-top-0 qu-left-0 qu-w-full qu-h-full qu-flex qu-flex-col qu-justify-center qu-items-center"
           >
             <span class="qu-text-xl">
-              <b class="qu-text-5xl">{{ spinnerValue }}</b
+              <b class="qu-text-5xl">{{ spinnerValue$ | async }}</b
               >%
             </span>
             <span>your average</span>
@@ -37,6 +37,12 @@
           You answered {{ quizResult.correctAnswers }} out of
           {{ quizResult.totalItems }} questions
         </p>
+        <app-button
+          icon="home"
+          [withAnimation]="false"
+          (clickEvent)="redirectToHome()"
+          >Return to Home</app-button
+        >
       </div>
     </section>
     <section
@@ -60,9 +66,9 @@
   </div>
 
   <div
-    class="qu-bg-cactus-light qu-h-32 qu-w-32 md:qu-h-64 md:qu-w-64 qu-rounded-full qu-absolute qu-top-48 lg:qu-top-72 qu-left-2 qu-ease-in-out qu-duration-500"
+    class="qu-bg-cactus-light qu-h-32 qu-w-32 md:qu-h-64 md:qu-w-64 qu-rounded-full qu-absolute qu-bottom-48 lg:qu-bottom-72 qu-left-2 qu-ease-in-out qu-duration-500"
   ></div>
   <div
-    class="qu-bg-cactus-dark qu-h-64 qu-w-64 md:qu-h-96 md:qu-w-96 qu-rounded-l-full qu-rounded-full qu-absolute qu-bottom-2 qu-right-2 qu-ease-in-out qu-duration-500"
+    class="qu-bg-cactus-dark qu-h-64 qu-w-64 md:qu-h-96 md:qu-w-96 qu-rounded-l-full qu-rounded-full qu-absolute qu-top-2 qu-right-2 qu-ease-in-out qu-duration-500"
   ></div>
 </app-wrapper>

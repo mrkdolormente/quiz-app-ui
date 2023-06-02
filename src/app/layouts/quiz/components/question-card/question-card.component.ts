@@ -1,4 +1,11 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { Answer, Question } from 'src/app/models/quiz.model';
 
 @Component({
@@ -8,6 +15,7 @@ import { Answer, Question } from 'src/app/models/quiz.model';
   host: {
     class: 'question-card',
   },
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class QuestionCardComponent {
   @Input() question: Question | null = null;

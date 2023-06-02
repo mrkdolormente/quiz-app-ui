@@ -4,14 +4,15 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatIconModule } from '@angular/material/icon';
 import { QuizComponent } from './quiz.component';
 import { QuizRoutingModule } from './quiz-routing.module';
-import { SharedModule } from '../shared/shared.module';
+import { SharedModule } from '../../shared/shared.module';
 import { QuestionCardComponent } from './components/question-card/question-card.component';
 import { QuizResultComponent } from './quiz-result/quiz-result.component';
 import { StoreModule } from '@ngrx/store';
-import { quizFeature } from '../state/quiz/quiz.feature';
+import { quizFeature } from '../../state/quiz/quiz.feature';
 import { EffectsModule } from '@ngrx/effects';
-import { QuizEffects } from '../state/quiz/quiz.effects';
-import { NumberToAlphabetPipe } from '../pipes/number-to-alphabet.pipe';
+import { QuizEffects } from '../../state/quiz/quiz.effects';
+import { NumberToAlphabetPipe } from '../../pipes/number-to-alphabet.pipe';
+import { RandomSortPipe } from 'src/app/pipes/random-sort.pipe';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { NumberToAlphabetPipe } from '../pipes/number-to-alphabet.pipe';
     QuestionCardComponent,
     QuizResultComponent,
     NumberToAlphabetPipe,
+    RandomSortPipe,
   ],
   imports: [
     CommonModule,
