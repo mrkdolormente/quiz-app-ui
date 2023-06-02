@@ -12,6 +12,7 @@ import { quizFeature } from '../../state/quiz/quiz.feature';
 import { EffectsModule } from '@ngrx/effects';
 import { QuizEffects } from '../../state/quiz/quiz.effects';
 import { NumberToAlphabetPipe } from '../../pipes/number-to-alphabet.pipe';
+import { RandomSortPipe } from 'src/app/pipes/random-sort.pipe';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { NumberToAlphabetPipe } from '../../pipes/number-to-alphabet.pipe';
     QuestionCardComponent,
     QuizResultComponent,
     NumberToAlphabetPipe,
+    RandomSortPipe,
   ],
   imports: [
     CommonModule,
