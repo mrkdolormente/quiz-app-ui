@@ -64,6 +64,13 @@ quiz-app/
 - `state/` folder contains the state management files used in the app.
 - `assets/` folder contains static assets such as images and CSS files.
 
+## Unit Testing
+
+To run and view the unit test, please follow the instructions below:
+
+1. Run test and generate test coverage: `ng test --no-watch --code-coverage`
+2. Access `coverage/quiz-app-ui` folder and open `index.html` on the browser
+
 ## Acknowledgements
 
 - [Angular](https://angular.io/) - The web application framework used.
