@@ -13,7 +13,11 @@ export class QuizService {
   constructor() {}
 
   getQuestions(): Observable<Question[]> {
-    return of(QUESTIONS.sort(() => 0.5 - Math.random()));
+    const questionList = [...QUESTIONS];
+
+    questionList.sort(() => Math.random() - 0.5);
+
+    return of(questionList);
   }
 
   submitQuizAnwers(answer: { [key: number]: number }): Observable<QuizResult> {
