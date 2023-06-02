@@ -13,7 +13,7 @@ import { QuizFacade } from '../state/quiz/quiz.facade';
 @Injectable({
   providedIn: 'root',
 })
-export class QuizResultGuardGuard implements CanActivate {
+export class QuizResultGuard implements CanActivate {
   constructor(
     private readonly _quizFacade: QuizFacade,
     private readonly _router: Router

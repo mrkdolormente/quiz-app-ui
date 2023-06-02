@@ -1,11 +1,13 @@
 import { Recommendation } from './recommendation.model';
+import { ScoreCategory } from './score.model';
 
 export interface QuizResult {
   correctAnswers: number;
   wrongAnswers: number;
-  average: number;
+  percentage: number;
   recommendations: Recommendation[];
   totalItems: number;
+  category: ScoreCategory;
 }
 
 export interface Question {
