@@ -3,7 +3,7 @@ import { Recommendation } from './recommendation.model';
 export interface QuizResult {
   correctAnswers: number;
   wrongAnswers: number;
-  average: number;
+  percentage: number;
   recommendations: Recommendation[];
   totalItems: number;
 }

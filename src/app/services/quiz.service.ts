@@ -28,14 +28,14 @@ export class QuizService {
     const totalItems = QUESTIONS.length;
     const correctCount = correctAnswers.length;
     const wrongCount = totalItems - correctCount;
-    const average = (correctCount / totalItems) * 100;
+    const percentage = (correctCount / totalItems) * 100;
 
     return of({
       correctAnswers: correctCount,
       wrongAnswers: wrongCount,
-      average,
+      percentage,
       totalItems,
-      recommendations: this.getRecommendations(average),
+      recommendations: this.getRecommendations(percentage),
     });
   }
 

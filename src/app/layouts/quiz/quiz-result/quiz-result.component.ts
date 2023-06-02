@@ -60,7 +60,7 @@ export class QuizResultComponent {
     this._state.connect(
       'spinnerValue',
       this.quizResult$.pipe(
-        map((result) => Math.round(result?.average || 0)),
+        map((result) => Math.round(result?.percentage || 0)),
         concatMap((average) =>
           interval(10).pipe(
             take(average),
