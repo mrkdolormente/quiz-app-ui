@@ -1,13 +1,33 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Self } from '@angular/core';
+import { RxState } from '@rx-angular/state';
+import { fromEvent, Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+
+interface ComponentState {
+  isBgActive: boolean;
+}
 
 @Component({
   selector: 'app-top-bar',
   templateUrl: './top-bar.component.html',
-  styleUrls: ['./top-bar.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [RxState],
 })
-export class TopBarComponent implements OnInit {
-  constructor() {}
+export class TopBarComponent {
+  isBgActive$: Observable<boolean>;
 
-  ngOnInit(): void {}
+  constructor(@Self() private readonly _state: RxState<ComponentState>) {
+    this.isBgActive$ = this._state.select('isBgActive');
+
+    this._state.connect(
+      'isBgActive',
+      fromEvent(window, 'scroll').pipe(
+        map(() => {
+          const win = window as Window;
+
+          return (win.scrollY || 0) !== 0;
+        })
+      )
+    );
+  }
 }
