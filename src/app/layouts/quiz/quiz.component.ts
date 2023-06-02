@@ -44,7 +44,7 @@ export class QuizComponent {
     @Self() private readonly _actionFactory: RxActionFactory<ComponentCommands>,
     @Self() private readonly _effects: RxEffects
   ) {
-    this.activeQuestion$ = this._quizFacade.activeQuestion;
+    this.activeQuestion$ = this._quizFacade.activeQuestion$;
     this.questionsCount$ = this._quizFacade.questionsCount$;
     this.currentCount$ = this._quizFacade.activeQuestionIndex$.pipe(
       map((index) => index + 1)

@@ -24,13 +24,18 @@
           >
           </mat-progress-spinner>
           <div
-            class="qu-absolute qu-top-0 qu-left-0 qu-w-full qu-h-full qu-flex qu-flex-col qu-justify-center qu-items-center"
+            class="qu-absolute qu-top-0 qu-left-0 qu-w-full qu-h-full qu-flex qu-flex-col qu-justify-center qu-items-center qu-px-8 qu-pt-10 qu-pb-8"
           >
             <span class="qu-text-xl">
               <b class="qu-text-5xl">{{ spinnerValue$ | async }}</b
               >%
             </span>
-            <span>your average</span>
+            <span class="qu-text-center qu-text-sm"
+              >your percentage is
+              <b class="qu-text-cactus-dark qu-block">{{
+                quizResult.category
+              }}</b></span
+            >
           </div>
         </div>
         <p class="qu-text-lg qu-text-center">

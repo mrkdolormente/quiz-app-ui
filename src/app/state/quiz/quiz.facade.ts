@@ -13,7 +13,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class QuizFacade {
-  readonly activeQuestion = this._store.select(selectActiveQuestion);
+  readonly activeQuestion$ = this._store.select(selectActiveQuestion);
   readonly activeQuestionIndex$ = this._store.select(selectActiveQuestionIndex);
   readonly questions$ = this._store.select(selectQuestions);
   readonly questionsCount$ = this._store.select(selectQuestionsCount);
