@@ -11,12 +11,7 @@ module.exports = {
         'cactus-yellow': '#F1B24A',
       },
       fontFamily: {
-        impact: [
-          'Impact',
-          'Haettenschweiler',
-          '"Arial Narrow Bold"',
-          'sans-serif',
-        ],
+        anton: ['Anton', 'sans-serif'],
       },
       zIndex: {
         infinity: '99999',
