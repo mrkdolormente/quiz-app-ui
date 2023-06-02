@@ -1,0 +1,38 @@
+<section
+  class="qu-bg-cactus-light/50 qu-rounded-2xl qu-p-10 qu-w-full"
+  *ngIf="recommendation"
+>
+  <h2
+    class="qu-uppercase qu-text-3xl qu-block qu-text-center qu-font-bold qu-text-cactus-dark"
+  >
+    {{ recommendation.key }} {{ recommendation.text }}
+  </h2>
+  <h3 class="qu-text-lg qu-font-bold qu-text-cactus-dark">
+    {{ recommendation.key }} {{ recommendation.text }} gives you
+  </h3>
+  <ul>
+    <li
+      *ngFor="let item of recommendation.content.course"
+      class="qu-flex qu-mb-5"
+    >
+      <mat-icon class="qu-pr-5 qu-mr-2 qu-text-cactus-dark"
+        >check_circle_outline</mat-icon
+      >{{ item }}
+    </li>
+  </ul>
+  <h3 class="qu-text-lg qu-font-bold qu-text-cactus-dark">
+    Prepare for your exam day with Cambridge quality you can trust
+  </h3>
+  <ul>
+    <li
+      *ngFor="let item of recommendation.content.exam"
+      class="qu-flex qu-mb-5"
+    >
+      <mat-icon class="qu-pr-5 qu-mr-2 qu-text-cactus-dark"
+        >check_circle_outline</mat-icon
+      >
+      <span [innerHtml]="item"></span>
+    </li>
+  </ul>
+  <app-button (clickEvent)="redirectToTestAndTrain()">Learn More</app-button>
+</section>

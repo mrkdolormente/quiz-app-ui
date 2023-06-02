@@ -14,12 +14,14 @@ import { EffectsModule } from '@ngrx/effects';
 import { QuizEffects } from '../../state/quiz/quiz.effects';
 import { NumberToAlphabetPipe } from '../../pipes/number-to-alphabet.pipe';
 import { RandomSortPipe } from 'src/app/pipes/random-sort.pipe';
+import { RecommendationCardComponent } from './components/recommendation-card/recommendation-card.component';
 
 @NgModule({
   declarations: [
     QuizComponent,
     QuestionCardComponent,
     QuizResultComponent,
+    RecommendationCardComponent,
     NumberToAlphabetPipe,
     RandomSortPipe,
   ],
