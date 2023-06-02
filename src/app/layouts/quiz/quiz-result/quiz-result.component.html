@@ -53,14 +53,20 @@
       >
         Recommended <span class="qu-text-2xl">for You</span>
       </h2>
-      <div class="qu-grid qu-grid-cols-1 md:qu-grid-cols-3 qu-gap-4">
+      <div class="qu-grid qu-grid-cols-1 md:qu-grid-cols-3 qu-gap-4 qu-mb-5">
         <button
           class="qu-p-4 qu-rounded-lg qu-outline qu-outline-offset-2 qu-outline-cactus-dark qu-bg-cactus-light/30 hover:qu-bg-cactus-dark hover:qu-text-white"
           *ngFor="let recommendation of quizResult.recommendations"
+          (click)="selectRecommendation(recommendation)"
         >
           <strong class="qu-block qu-text-4xl">{{ recommendation.key }}</strong>
           {{ recommendation.text }}
         </button>
+      </div>
+      <div #anchorEl>
+        <app-recommendation-card
+          [recommendation]="selectedRecommendation$ | async"
+        ></app-recommendation-card>
       </div>
     </section>
   </div>
