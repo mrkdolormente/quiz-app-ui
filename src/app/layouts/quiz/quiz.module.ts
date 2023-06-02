@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatIconModule } from '@angular/material/icon';
 import { QuizComponent } from './quiz.component';
 import { QuizRoutingModule } from './quiz-routing.module';
@@ -28,6 +29,7 @@ import { RandomSortPipe } from 'src/app/pipes/random-sort.pipe';
     SharedModule,
     MatIconModule,
     MatProgressSpinnerModule,
+    MatProgressBarModule,
     StoreModule.forFeature(quizFeature),
     EffectsModule.forFeature([QuizEffects]),
   ],
