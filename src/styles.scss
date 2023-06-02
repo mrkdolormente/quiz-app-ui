@@ -1,1 +1,129 @@
-/* You can add global styles to this file, and also import other style files */
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use "@angular/material" as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+$cactus-green-palette: (
+  50: #e8f1e4,
+  100: #deebd7,
+  200: #d3e5cb,
+  300: #c6debc,
+  400: #bad7ae,
+  500: #b2d3a5,
+  600: #aacf9c,
+  700: #a4cc95,
+  800: #a1ca91,
+  900: #9dc88d,
+  contrast: (
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: rgba(black, 0.87),
+    400: rgba(black, 0.87),
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+    A100: rgba(black, 0.87),
+    A200: rgba(black, 0.87),
+    A400: white,
+    A700: white,
+  ),
+);
+
+$cactus-yellow-palette: (
+  50: #fcf0db,
+  100: #f8daa8,
+  200: #f9dfb3,
+  300: #f7d194,
+  400: #f5c980,
+  500: #f4c16e,
+  600: #f3bb60,
+  700: #f2b859,
+  800: #f2b552,
+  900: #f1b24a,
+  contrast: (
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: rgba(black, 0.87),
+    400: rgba(black, 0.87),
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+    A100: rgba(black, 0.87),
+    A200: rgba(black, 0.87),
+    A400: white,
+    A700: white,
+  ),
+);
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$quiz-app-ui-primary: mat.define-palette($cactus-green-palette, 900);
+$quiz-app-ui-accent: mat.define-palette($cactus-yellow-palette, 900);
+
+// The warn palette is optional (defaults to red).
+$quiz-app-ui-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$quiz-app-ui-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $quiz-app-ui-primary,
+      accent: $quiz-app-ui-accent,
+      warn: $quiz-app-ui-warn,
+    ),
+  )
+);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($quiz-app-ui-theme);
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 8px 0;
+}
+
+p {
+  margin: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+button {
+  -webkit-tap-highlight-color: transparent;
+}

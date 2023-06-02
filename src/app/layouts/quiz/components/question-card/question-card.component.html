@@ -1,0 +1,51 @@
+<section
+  class="qu-w-full qu-bg-white/30 qu-rounded-2xl qu-border-none qu-shadow-xl qu-px-5 qu-pb-5 qu-pt-14 sm:qu-px-7 md:qu-px-14 md:qu-pb-10 md:qu-pt-20 lg:qu-pb-14 lg:qu-pt-28 lg:qu-px-28 qu-text-center qu-z-20 qu-relative"
+  *ngIf="question"
+>
+  <div
+    class="qu-relative qu-bg-white qu-px-10 qu-pb-12 qu-pt-16 qu-rounded-md qu-text-center qu-mb-4 qu-border-cactus-medium qu-border-2"
+  >
+    <div class="qu-absolute -qu-top-4 qu-left-0 qu-w-full qu-text-center">
+      <span
+        class="qu-text-base sm:qu-text-lg qu-bg-cactus-dark qu-text-white qu-p-5 qu-rounded-full qu-font-medium"
+        >Question {{ currentCount$ | async }} of {{ totalItem }}</span
+      >
+    </div>
+    {{ question.text }}
+  </div>
+  <div class="qu-grid qu-grid-cols-1 md:qu-grid-cols-2 qu-gap-4 qu-mb-10">
+    <div
+      class="qu-min-h-20"
+      *ngFor="let option of question.options | randomSort; let x = index"
+    >
+      <button
+        class="qu-rounded-md qu-p-6 qu-ease-in-out qu-duration-100 qu-w-full qu-h-full"
+        [ngClass]="{
+          'qu-outline qu-outline-offset-2 qu-outline-cactus-dark qu-bg-cactus-dark qu-text-white qu-font-medium':
+            option.key === (answerKey$ | async),
+          'qu-border-cactus-medium qu-border-2 qu-bg-white hover:qu-bg-white/50':
+            option.key !== (answerKey$ | async)
+        }"
+        (click)="selectAnswer(option.key)"
+      >
+        {{ x | numberToAlphabet }}. {{ option.text }}
+      </button>
+    </div>
+  </div>
+
+  <app-button
+    [isDisabled]="(answerKey$ | async) === 0"
+    (clickEvent)="updateAnswersList()"
+    >{{
+      currentCount === totalItem ? 'See Result' : 'Next Question'
+    }}</app-button
+  >
+
+  <div class="qu-mt-10">
+    <mat-progress-bar
+      mode="determinate"
+      [value]="progress$ | async"
+      color="accent"
+    ></mat-progress-bar>
+  </div>
+</section>
