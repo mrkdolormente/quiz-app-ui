@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   testAndTrainUrl: 'https://www.testandtrain.com/',
+  quizResultStorageKey: 'QuizAppResult',
 };
 
 /*
