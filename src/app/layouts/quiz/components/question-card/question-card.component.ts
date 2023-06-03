@@ -82,6 +82,7 @@ export class QuestionCardComponent {
                 questionKey: this.question?.key ?? 0,
               });
 
+              // reset answerKey state
               this._state.set({
                 answerKey: 0,
               });
@@ -92,6 +93,9 @@ export class QuestionCardComponent {
     );
   }
 
+  /**
+   * @param answer question selected answer key
+   */
   selectAnswer(answer: number) {
     this._state.set({
       answerKey: answer,

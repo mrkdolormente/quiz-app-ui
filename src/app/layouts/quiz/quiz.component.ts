@@ -71,12 +71,15 @@ export class QuizComponent {
     this._effects.register(
       this._commands.updateAnswerList$.pipe(
         tap((answer) => {
+          // set answer key and question key to the answersList object
           this.answersList[answer.questionKey] = answer.key;
 
+          // navigate to the next question
           this._quizFacade.dispatch(QuizActions.incrementQuestionIndex());
         }),
         debounceTime(150),
         tap(() => {
+          // scroll to answer tag if element is visible
           if (this._anchorEl !== null) {
             const scrollPosition = this._anchorEl.nativeElement.offsetTop - 110;
 
@@ -89,6 +92,7 @@ export class QuizComponent {
       )
     );
 
+    // clear the quiz state
     this._quizFacade.dispatch(QuizActions.clearQuizData());
   }
 
