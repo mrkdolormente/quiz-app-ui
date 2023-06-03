@@ -11,7 +11,16 @@ import { QuizFacade } from 'src/app/state/quiz/quiz.facade';
 import { QuizResult } from 'src/app/models/quiz.model';
 
 import { Observable, interval } from 'rxjs';
-import { concatMap, map, scan, take, tap, debounceTime } from 'rxjs/operators';
+import {
+  concatMap,
+  map,
+  scan,
+  take,
+  tap,
+  debounceTime,
+  startWith,
+  filter,
+} from 'rxjs/operators';
 import { RxState } from '@rx-angular/state';
 import { Router } from '@angular/router';
 import { Recommendation } from 'src/app/models/recommendation.model';
@@ -61,9 +70,9 @@ export class QuizResultComponent {
       'spinnerValue',
       this.quizResult$.pipe(
         map((result) => Math.round(result?.percentage || 0)),
-        concatMap((average) =>
+        concatMap((percentage) =>
           interval(10).pipe(
-            take(average),
+            take(percentage),
             scan((count) => count + 1, 0)
           )
         )
