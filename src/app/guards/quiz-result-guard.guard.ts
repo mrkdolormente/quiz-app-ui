@@ -19,6 +19,9 @@ export class QuizResultGuard implements CanActivate {
     private readonly _router: Router
   ) {}
 
+  /**
+   * @returns true or false based on quiz result state
+   */
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot

@@ -1,13 +1,20 @@
 import { createReducer, on } from '@ngrx/store';
 import { QuizState } from './quiz.state';
 import * as QuizActions from './quiz.actions';
+import { environment } from 'src/environments/environment';
+
+const localStoragePreviousResult = localStorage.getItem(
+  environment.quizResultStorageKey
+);
 
 export const initialQuizConfiguration: QuizState = {
   activeQuestionIndex: 0,
   status: 'initial',
   questions: [],
   error: null,
-  result: null,
+  result: localStoragePreviousResult
+    ? JSON.parse(localStoragePreviousResult)
+    : null,
 };
 
 export const quizReducer = createReducer<QuizState>(

@@ -27,7 +27,7 @@
             class="qu-absolute qu-top-0 qu-left-0 qu-w-full qu-h-full qu-flex qu-flex-col qu-justify-center qu-items-center qu-px-8 qu-pt-10 qu-pb-8"
           >
             <span class="qu-text-xl">
-              <b class="qu-text-5xl">{{ spinnerValue$ | async }}</b
+              <b class="qu-text-5xl">{{ (spinnerValue$ | async) || 0 }}</b
               >%
             </span>
             <span class="qu-text-center qu-text-sm"

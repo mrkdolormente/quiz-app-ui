@@ -77,12 +77,12 @@ export class QuestionCardComponent {
             take(1),
             filter((key) => key !== 0),
             tap((key) => {
-              console.log('Hello');
               this.updateAnswersListEvent.emit({
                 key,
                 questionKey: this.question?.key ?? 0,
               });
 
+              // reset answerKey state
               this._state.set({
                 answerKey: 0,
               });
@@ -93,6 +93,9 @@ export class QuestionCardComponent {
     );
   }
 
+  /**
+   * @param answer question selected answer key
+   */
   selectAnswer(answer: number) {
     this._state.set({
       answerKey: answer,
