@@ -77,7 +77,6 @@ export class QuestionCardComponent {
             take(1),
             filter((key) => key !== 0),
             tap((key) => {
-              console.log('Hello');
               this.updateAnswersListEvent.emit({
                 key,
                 questionKey: this.question?.key ?? 0,

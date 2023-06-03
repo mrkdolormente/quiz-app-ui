@@ -6,6 +6,7 @@ import { Recommendation } from '../models/recommendation.model';
 import { SCORE_RANGES } from '../constants/score';
 import { RECOMMENDATIONS } from '../constants/recommendations';
 import { ScoreCategory, ScoreRange } from '../models/score.model';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -34,14 +35,21 @@ export class QuizService {
     const scoreRange = this.getScoreRange(percentage);
     const scoreCategory = scoreRange?.category || 'low';
 
-    return of({
+    const result = {
       correctAnswers: correctCount,
       wrongAnswers: wrongCount,
       percentage,
       totalItems,
       category: scoreCategory,
       recommendations: this.getRecommendations(scoreCategory),
-    });
+    };
+
+    localStorage.setItem(
+      environment.quizResultStorageKey,
+      JSON.stringify(result)
+    );
+
+    return of(result);
   }
 
   getRecommendations(category: ScoreCategory): Recommendation[] {
