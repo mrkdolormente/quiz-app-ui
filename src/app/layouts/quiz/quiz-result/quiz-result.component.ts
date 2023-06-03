@@ -88,6 +88,7 @@ export class QuizResultComponent {
         }),
         debounceTime(100),
         tap(() => {
+          // scroll to answer tag if element is visible
           if (this._anchorEl !== null) {
             const scrollPosition = this._anchorEl.nativeElement.offsetTop - 110;
 
