@@ -14,6 +14,9 @@ import { environment } from 'src/environments/environment';
 export class QuizService {
   constructor() {}
 
+  /**
+   * @returns randomize questions list
+   */
   getQuestions(): Observable<Question[]> {
     const questionList = [...QUESTIONS];
 
@@ -22,6 +25,11 @@ export class QuizService {
     return of(questionList);
   }
 
+  /**
+   * @description compute user submitted answers
+   * @param answer user answer properties
+   * @returns computed result of the quiz
+   */
   submitQuizAnwers(answer: { [key: number]: number }): Observable<QuizResult> {
     const correctAnswers = QUESTIONS.filter(
       (question) => question.answerKey === answer[question.key]
@@ -52,12 +60,22 @@ export class QuizService {
     return of(result);
   }
 
+  /**
+   * @description get all the recommended courses based on score category
+   * @param category - score category ex. low
+   * @returns array of recommended
+   */
   getRecommendations(category: ScoreCategory): Recommendation[] {
     return RECOMMENDATIONS.filter(
       (recommendation) => recommendation.category === category
     );
   }
 
+  /**
+   * @descrption get the applicable score range based on the percentage
+   * @param percentage user average score
+   * @returns score range
+   */
   getScoreRange(percentage: number): ScoreRange | undefined {
     return SCORE_RANGES.find(
       (range) => range.min <= percentage && range.max >= percentage
