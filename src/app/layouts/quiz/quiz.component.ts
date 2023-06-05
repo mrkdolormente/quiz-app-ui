@@ -50,6 +50,9 @@ export class QuizComponent {
       map((index) => index + 1)
     );
 
+    // clear the quiz state
+    this._quizFacade.dispatch(QuizActions.clearQuizData());
+
     this._effects.register(
       this._quizFacade.activeQuestionIndex$.pipe(
         concatLatestFrom(() => this.questionsCount$),
@@ -91,9 +94,6 @@ export class QuizComponent {
         })
       )
     );
-
-    // clear the quiz state
-    this._quizFacade.dispatch(QuizActions.clearQuizData());
   }
 
   updateAnswersList(answer: Answer) {
