@@ -37,7 +37,7 @@
     [isDisabled]="(answerKey$ | async) === 0"
     (clickEvent)="updateAnswersList()"
     >{{
-      currentCount === totalItem ? 'See Result' : 'Next Question'
+      (currentCount$ | async) === totalItem ? 'See Result' : 'Next Question'
     }}</app-button
   >
 
